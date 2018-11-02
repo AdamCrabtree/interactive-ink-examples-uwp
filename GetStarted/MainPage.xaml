@@ -7,13 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Uc="using:MyScript.IInk.UIReferenceImplementation.UserControls"
     mc:Ignorable="d">
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto"></RowDefinition>
-      <RowDefinition Height="*"></RowDefinition>
-    </Grid.RowDefinitions>
-    <CommandBar>            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <CommandBar>
+            <AppBarButton Label="Text Note" Click="NavigateToSecondPage"></AppBarButton>
             <AppBarButton Icon="Undo" Label="Undo" Click="AppBar_UndoButton_Click"/>
             <AppBarButton Icon="Redo" Label="Redo" Click="AppBar_RedoButton_Click"/>
             <AppBarButton Icon="Delete" Label="Clear" Click="AppBar_ClearButton_Click"/>
@@ -25,19 +26,20 @@
             </CommandBar.Content>
         </CommandBar>
 
-    <Uc:EditorUserControl Grid.Row="1"  x:Name="UcEditor"></Uc:EditorUserControl>
-      
-    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8">
-      <ToggleButton Margin="2" x:Name="editToggleButton" Click="AppBar_EditButton_Click">
-        <TextBlock HorizontalAlignment="Center" Text="Pen" />
-      </ToggleButton>
-      <ToggleButton Margin="2" x:Name="touchPointerToggleButton" Click="AppBar_TouchPointerButton_Click">
-        <TextBlock HorizontalAlignment="Center" Text="Touch" />
-      </ToggleButton>
-      <ToggleButton Margin="2" x:Name="autoToggleButton"  Click="AppBar_AutoButton_Click">
-        <TextBlock HorizontalAlignment="Center" Text="Auto" />
-      </ToggleButton>
-    </StackPanel>
+        <Uc:EditorUserControl Grid.Row="1"  x:Name="UcEditor" Margin="10,44,-10,314" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Uc:EditorUserControl Grid.Row="1" x:Name="UcEditor2" Margin="-10,643,10,10"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8">
+            <ToggleButton Margin="2" x:Name="editToggleButton" Click="AppBar_EditButton_Click">
+                <TextBlock HorizontalAlignment="Center" Text="Pen" />
+            </ToggleButton>
+            <ToggleButton Margin="2" x:Name="touchPointerToggleButton" Click="AppBar_TouchPointerButton_Click">
+                <TextBlock HorizontalAlignment="Center" Text="Touch" />
+            </ToggleButton>
+            <ToggleButton Margin="2" x:Name="autoToggleButton"  Click="AppBar_AutoButton_Click">
+                <TextBlock HorizontalAlignment="Center" Text="Auto" />
+            </ToggleButton>
+        </StackPanel>
+        <TextBox HorizontalAlignment="Left" Margin="24,705,0,0" Grid.Row="1" Text="Answer" VerticalAlignment="Top"/>
 
-  </Grid>
+    </Grid>
 </Page>

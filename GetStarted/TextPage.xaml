@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="MyScript.IInk.GetStarted.TextPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyScript.IInk.GetStarted"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Uc="using:MyScript.IInk.UIReferenceImplementation.UserControls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <CommandBar>
+            <AppBarButton Label="Text Noteapd" Click="NavigateToFirstPage"></AppBarButton>
+            <AppBarButton Icon="Undo" Label="Undo" Click="AppBar_UndoButton_Click"/>
+            <AppBarButton Icon="Redo" Label="Redo" Click="AppBar_RedoButton_Click"/>
+            <AppBarButton Icon="Delete" Label="Clear" Click="AppBar_ClearButton_Click"/>
+            <AppBarButton Label="Convert" Click="AppBar_ConvertButton_Click">
+                <TextBlock HorizontalAlignment="Center" Text="Convert" />
+            </AppBarButton>
+            <CommandBar.Content>
+                <TextBlock x:Name="Title" Margin="12,14" FontFamily="bold" FontSize="16"/>
+            </CommandBar.Content>
+        </CommandBar>
+        <Uc:EditorUserControl Grid.Row="1"  x:Name="UcEditor"></Uc:EditorUserControl>
+    </Grid>
+</Page>
