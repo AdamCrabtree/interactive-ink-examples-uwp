@@ -40,6 +40,7 @@
             </ToggleButton>
         </StackPanel>
         <TextBox HorizontalAlignment="Left" Margin="24,705,0,0" Grid.Row="1" Text="Answer" VerticalAlignment="Top"/>
+        <Image Name="ImageSource" HorizontalAlignment="Left" Height="932" Margin="1074,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="416" RenderTransformOrigin="-0.739,0.488"/>
 
     </Grid>
 </Page>

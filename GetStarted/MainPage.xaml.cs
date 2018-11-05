@@ -102,7 +102,7 @@ namespace MyScript.IInk.GetStarted
         private async void cleanURLAsync(string latextString)
         {
             string ApiKey = "4Q2EQ8-UEQGLYJ4GL";
-            latextString.Replace("+", "%2B");
+            latextString = latextString.Replace("+", "%2B");
             string url = "https://api.wolframalpha.com/v1/simple?i=" + latextString +"&appid=" + ApiKey;
             HttpClient wc = new HttpClient();
             Stream stream = await wc.GetStreamAsync(url);
@@ -111,6 +111,7 @@ namespace MyScript.IInk.GetStarted
             myStream.Position = 0;
             BitmapImage myBitmap = new BitmapImage();
             myBitmap.SetSource(myStream.AsRandomAccessStream());
+            ImageSource.Source = myBitmap;
 
         }
         private void SetInputMode(InputMode inputMode)
