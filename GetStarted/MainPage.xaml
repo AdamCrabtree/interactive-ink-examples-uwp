@@ -26,8 +26,7 @@
             </CommandBar.Content>
         </CommandBar>
 
-        <Uc:EditorUserControl Grid.Row="1"  x:Name="UcEditor" Margin="10,44,-10,314" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Uc:EditorUserControl Grid.Row="1" x:Name="UcEditor2" Margin="-10,643,10,10"/>
+        <Uc:EditorUserControl Grid.Row="1"  x:Name="UcEditor" Margin="10,44,-10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8">
             <ToggleButton Margin="2" x:Name="editToggleButton" Click="AppBar_EditButton_Click">
                 <TextBlock HorizontalAlignment="Center" Text="Pen" />
@@ -39,8 +38,11 @@
                 <TextBlock HorizontalAlignment="Center" Text="Auto" />
             </ToggleButton>
         </StackPanel>
-        <TextBox HorizontalAlignment="Left" Margin="24,705,0,0" Grid.Row="1" Text="Answer" VerticalAlignment="Top"/>
-        <Image Name="ImageSource" HorizontalAlignment="Left" Height="932" Margin="1074,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="416" RenderTransformOrigin="-0.739,0.488"/>
-
+        <Image Name="ImageSource" HorizontalAlignment="Left" Height="932" Margin="1074,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="416" RenderTransformOrigin="-0.739,0.488" ManipulationMode="All"/>
+        <Rectangle HorizontalAlignment="Left" Height="1271" Margin="1069,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="5" Fill="{ThemeResource AppBarItemPointerOverForegroundThemeBrush}" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <CompositeTransform ScaleX="-1"/>
+            </Rectangle.RenderTransform>
+        </Rectangle>
     </Grid>
 </Page>

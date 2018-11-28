@@ -21,7 +21,6 @@ namespace MyScript.IInk.GetStarted
 
         private Engine _engine;
         private Engine _engine2;
-        private Editor Editor2 => UcEditor2.Editor;
         private Editor Editor => UcEditor.Editor;
 
         public object WebClient { get; private set; }
@@ -52,11 +51,9 @@ namespace MyScript.IInk.GetStarted
 
             // Initialize the editor with the engine
             UcEditor.Engine = _engine;
-            UcEditor2.Engine = _engine2;
             // Force pointer to be a pen, for an automatic detection, set InputMode to AUTO
             SetInputMode(InputMode.PEN);
             Editor.ToString();
-            Editor2.ToString();
             NewFile();
             Loaded -= Page_Loaded;
         }
@@ -73,6 +70,7 @@ namespace MyScript.IInk.GetStarted
 
         private void AppBar_ClearButton_Click(object sender, RoutedEventArgs e)
         {
+            ImageSource.Source = null;
             Editor.Clear();
         }
 
@@ -81,16 +79,12 @@ namespace MyScript.IInk.GetStarted
             try
             {
                 var supportedStates = Editor.GetSupportedTargetConversionStates(null);
-                var supportedStates2 = Editor2.GetSupportedTargetConversionStates(null);
                 if ( (supportedStates != null) && (supportedStates.Count() > 0))
                 {
                     Editor.Convert(null, supportedStates[0]);
-                    Editor2.Convert(null, supportedStates[0]);
                 }
                 string latex = Editor.Export_(Editor.GetRootBlock(), MimeType.LATEX);
                 string latex2 = latex;
-                string latex3 = Editor2.Export_(Editor.GetRootBlock(), MimeType.LATEX);
-                string latex4 = latex3;
                 cleanURLAsync(latex2);
             }
             catch (Exception ex)
@@ -112,12 +106,12 @@ namespace MyScript.IInk.GetStarted
             BitmapImage myBitmap = new BitmapImage();
             myBitmap.SetSource(myStream.AsRandomAccessStream());
             ImageSource.Source = myBitmap;
+            ImageSource.Stretch = Windows.UI.Xaml.Media.Stretch.Fill;
 
         }
         private void SetInputMode(InputMode inputMode)
         {
             UcEditor.InputMode = inputMode;
-            UcEditor2.InputMode = inputMode;
             autoToggleButton.IsChecked = (inputMode == InputMode.AUTO);
             touchPointerToggleButton.IsChecked = (inputMode == InputMode.TOUCH);
             editToggleButton.IsChecked = (inputMode == InputMode.PEN);
@@ -161,7 +155,6 @@ namespace MyScript.IInk.GetStarted
             var packageName2 = MakeUntitledFilename2();
             var package2 = _engine2.CreatePackage(packageName2);
             var part2 = package2.CreatePart(PartType);
-            Editor2.Part = part2;
         }
         private static string MakeUntitledFilename2()
         {
